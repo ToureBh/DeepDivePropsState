@@ -39,6 +39,14 @@ export default class JournalList extends Component {
       this.setState({ journalData: rawJournalData, isOpen: true });
     };
 
+    toggleStatus = () => {
+      if (this.state.isOpen) {
+          this.setState({ journalData: [], isOpen: false })
+      } else {
+          this.setState({ journalData: rawJournalData, isOpen: true })
+      }
+    };
+
     render() {
         const journalEntries = this.state.journalData.map(journalEntry => {
             return(
@@ -59,6 +67,7 @@ export default class JournalList extends Component {
 
                 <button onClick={this.clearEntries}>Clear all entries</button>
                 <button onClick={this.showAllEntries}>Show all entries</button>
+                <button onClick={this.toggleStatus}>Toggle</button>
 
             </div>
         );
